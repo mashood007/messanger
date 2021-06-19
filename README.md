@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a messaging application build on ruby on rails.
 
-Things you may want to cover:
+# Requeirments
+  * Ruby => 2.7.2
+  * Ruby on Rails => 5.2 
+  * Postgresql
+# Other technologies implimented
+  * javascript/jquery
+  * Css
+  * Bootstrap
 
-* Ruby version
+# Setup
+  * Checkout the application
+  * Run rails db:setup
+  * Run bundle install 
+  * Run rails s
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Database Structure
+  * users (id, name, email, password, address, created_at)
+  * messages (id, title, is_read, sender_id, receiver_id, created_at)
