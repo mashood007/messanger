@@ -1,0 +1,32 @@
+<%= form_with(model: message, local: true) do |form| %>
+    <% if message.errors.any? %>
+      <div id="error_explanation" class="error alert alert-danger">
+        <h6><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h6>
+
+        <ul>
+        <% message.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :parent %>
+      <%= form.select :receiver_id , options_for_select(@receivers),{ prompt: 'Select any one'}, { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :title%>
+      <%= form.text_field :title, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content %>
+      <%= form.text_area :content, :class => "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Save", :class => "btn btn-info" %>
+    </div>
+  <% end %>

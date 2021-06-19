@@ -1,0 +1,9 @@
+<% @messages.each_with_index do |message, index| %>
+    <tr>
+    <td><%= index+1 %></td>
+    <td><%= message.title %></td>
+    <td><%= message.receiver.name %></td>
+    <td><%= message.created_at.strftime("%d/%m/%Y %I:%M%p") %></td>
+    <td><%= link_to 'Show', message %></td>
+    </tr>
+  <% end %>

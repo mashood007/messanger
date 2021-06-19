@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Messenger</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script>
+    function notify()
+    {
+      $.ajax({
+        url: "<%= notify_messages_path %>",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+          console.log(res);
+          $('#notify').html(res.count)
+        }
+      });
+    }
+  <% if current_user %>
+    $(document).ready(function() {
+      setInterval(function() {
+      notify()
+      }, 30000);
+    });
+    
+  <% end %>
+  </script>
+
+  </head>
+  <body>
+    <%= render 'layouts/navbar.html.erb' %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+  </body>
+</html>
